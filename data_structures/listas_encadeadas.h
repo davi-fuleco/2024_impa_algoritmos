@@ -1,3 +1,6 @@
+// Para lidar com erros
+#include <iostream>
+using namespace std;
 #include "vetores.h"
 
 // Definição de lista encadeada
@@ -33,7 +36,7 @@ float Lista_Encadeada::cabeça()
 // Conteudo de um endereço da lista
 float Lista_Encadeada::conteudo(int ender)
 {
-    if (ender >= v.n || ender % 2 == 0)
+    if (ender >= v.n || ender % 2 != 0)
     {
         throw std::invalid_argument("Posição inválida");
     }
@@ -50,7 +53,7 @@ float Lista_Encadeada::conteudo(int ender)
 // Próximo endereço
 int Lista_Encadeada::proximo(int ender)
 {
-    if (ender >= v.n || ender % 2 == 1)
+    if (ender >= v.n || ender % 2 != 0)
     {
         throw std::invalid_argument("Endereço inválida");
     }
@@ -92,6 +95,10 @@ void Lista_Encadeada::apagar_proximo(int ender)
     int neto = proximo(proximo(ender));
     v.alterar(ender+1, neto);
 }
+
+
+// Buscar
+
 
 
 // Separar Lista Encadeada em duas

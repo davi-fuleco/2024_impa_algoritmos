@@ -1,8 +1,12 @@
+// Para lidar com erros
+#include <iostream>
+using namespace std;
+
 // Definição de vetor
 class Vetor
 {
     public:
-        int n = 0; // tamanho
+        int n = 0; // Tamanho
         float ler(int i);
         void colocar(float b);
         void alterar(int i, float b);
@@ -10,9 +14,10 @@ class Vetor
         void inserir_em(int k, float b);
 
     private:
-        int c = 8; // capacidade
-        float *p = new float[c]; // ponteiro
-        void redimensionar(int l);
+        int c = 8; // Capacidade
+        float *p = new float[c]; // Ponteiro
+        float *p_new; // Novo ponteiro
+        void redimensionar(int M);
 };
 
 
@@ -69,15 +74,16 @@ float Vetor::pegar()
 
 
 // Redimensionar o vetor para ter capacidade l
-void Vetor::redimensionar(int l)
+void Vetor::redimensionar(int M)
 {
-    float *p_new = new float[l];
+    p_new = new float[M];
     for (int j = 0; j < c; j++)
     {
         p_new[j] = p[j];
     }
+    delete p;
     p = p_new;
-    c = l;
+    c = M;
 }
 
 
